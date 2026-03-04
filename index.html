@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The AS Lex — Tax · Securities · Corporate Law</title>
-  <meta name="description" content="The AS Lex is a specialised legal and tax practice. We advise on Income Tax, GST, Securities Law, Companies Act, and PMLA matters before ITAT, NCLT, SEBI, and the ED." />
+  <meta name="description" content="The AS Lex is a specialised legal and tax practice advising on Income Tax, GST, Securities Law, Companies Act, PMLA, and White Collar matters before ITAT, NCLT, SEBI, and the ED." />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230A0E1A'/><text y='.9em' font-size='80' x='50%' text-anchor='middle' font-family='serif' fill='%23C9A84C'>Ł</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23030014' stroke='%23C9A84C' stroke-width='2'/><text y='.9em' font-size='50' x='50%' text-anchor='middle' font-family='serif' fill='%23C9A84C' dy='8'>Ł</text></svg>" />
 </head>
 <body>
+
+<!-- Star Field Canvas -->
+<canvas id="star-field"></canvas>
 
 <!-- ══════════════════════════════════════════
      NAVIGATION
@@ -21,6 +24,7 @@
 
   <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#founder">Founder</a></li>
     <li><a href="#practice">Practice</a></li>
     <li><a href="blog.html">Insights</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -37,9 +41,11 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+  <div class="hero-orbit"></div>
+  <div class="hero-orbit hero-orbit-2"></div>
 
   <div class="hero-content">
-    <div class="hero-eyebrow animate delay-1">Tax · Securities · Corporate</div>
+    <div class="hero-eyebrow animate delay-1">Tax · Securities · Corporate · White Collar</div>
 
     <h1 class="hero-title animate delay-2">
       The <em>AS</em> Lex
@@ -50,8 +56,8 @@
     </p>
 
     <p class="hero-desc animate delay-4">
-      A specialised legal and tax practice advising on complex matters
-      across income tax, securities regulation, corporate law, and financial crimes.
+      A specialised legal and tax practice navigating the most complex intersections
+      of income tax, securities regulation, corporate law, and financial crime defence.
       Trusted counsel before ITAT, NCLT, SEBI, and the Enforcement Directorate.
     </p>
 
@@ -74,14 +80,16 @@
         <h2 class="section-title">Built on <em>depth,</em> not breadth.</h2>
         <div class="gold-divider"></div>
         <p class="section-body">
-          The AS Lex is a focused practice at the intersection of tax law and financial regulation.
-          We operate in a space where numbers, statutes, and strategy converge — advising clients
-          on both the assessee side and as counsel to the revenue, depending on the matter.
+          The AS Lex operates at the intersection of tax law, securities regulation, and financial crime defence.
+          We work in a space where numbers, statutes, and strategy converge — advising clients
+          on both the assessee side and as counsel to the revenue.
         </p>
         <br />
         <p class="section-body">
-          Our work spans statutory tribunals and quasi-judicial forums, with a strong emphasis
-          on representation, written submissions, and the kind of drafting that actually moves the needle.
+          Our practice spans statutory tribunals and quasi-judicial forums across India,
+          with a strong emphasis on representation, written submissions, and the kind of
+          drafting that actually moves the needle. We believe in depth over breadth —
+          fewer matters, better outcomes.
         </p>
         <br />
         <a href="#contact" class="btn-outline" style="margin-top: 1.5rem; display: inline-block;">
@@ -118,6 +126,54 @@
 </section>
 
 <!-- ══════════════════════════════════════════
+     FOUNDER
+══════════════════════════════════════════ -->
+<section id="founder">
+  <div class="section-inner">
+    <div class="founder-grid">
+
+      <div class="founder-visual">
+        <div class="founder-avatar">
+          <span class="founder-initials">AS</span>
+        </div>
+      </div>
+
+      <div class="founder-text">
+        <div class="section-label">The Founder</div>
+        <h2 class="section-title">Abhinav <em>Swarnkar</em></h2>
+        <div class="gold-divider"></div>
+        <p class="section-body">
+          Chartered Accountant. Pursuing LLB at Government Law College, Mumbai.
+          Masters in Global Business from SP Jain School of Global Management,
+          with stints in Singapore, Dubai, and Sydney.
+          Securities Law Course from GLC Mumbai.
+        </p>
+        <br />
+        <p class="section-body">
+          Abhinav brings a rare combination — the financial acuity of a CA with the
+          legal mind of a practitioner. His core strengths lie in financial analysis,
+          balance sheet interpretation, and exceptional drafting. He represents clients
+          across income tax, securities, and corporate matters before ITAT, NCLT, SEBI,
+          and the Enforcement Directorate — on both sides of the aisle.
+        </p>
+
+        <div class="founder-credentials">
+          <span class="credential-tag highlight">CA</span>
+          <span class="credential-tag">LLB (GLC Mumbai)</span>
+          <span class="credential-tag">MGB (SP Jain)</span>
+          <span class="credential-tag">Securities Law Course</span>
+          <span class="credential-tag">Income Tax</span>
+          <span class="credential-tag">SEBI</span>
+          <span class="credential-tag">PMLA</span>
+          <span class="credential-tag">Companies Act</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
      PRACTICE AREAS
 ══════════════════════════════════════════ -->
 <section id="practice">
@@ -131,9 +187,9 @@
         <span class="practice-icon">⚖️</span>
         <h3 class="practice-name">Income Tax</h3>
         <p class="practice-desc">
-          Assessments, appeals, reassessment proceedings, search & seizure matters,
-          and representation before the Income Tax Appellate Tribunal (ITAT).
-          Both assessee and revenue-side mandates.
+          Assessments, reassessments, search &amp; seizure matters, and appeals before
+          the Income Tax Appellate Tribunal (ITAT). Both assessee-side defence and
+          revenue-side representation. From Section 148 notices to penalty proceedings.
         </p>
       </div>
 
@@ -141,44 +197,48 @@
         <span class="practice-icon">📊</span>
         <h3 class="practice-name">Securities Law</h3>
         <p class="practice-desc">
-          SEBI investigations, insider trading matters, takeover regulations,
-          listing obligations, and regulatory advisory for listed companies and market participants.
+          SEBI investigations, insider trading (PIT Regulations), takeover code compliance,
+          LODR obligations, and regulatory advisory. Representation before SEBI and SAT
+          for listed companies, intermediaries, and market participants.
         </p>
       </div>
 
       <div class="practice-card">
         <span class="practice-icon">🏛️</span>
-        <h3 class="practice-name">Companies Act & NCLT</h3>
+        <h3 class="practice-name">Companies Act &amp; NCLT</h3>
         <p class="practice-desc">
-          Corporate insolvency (IBC), oppression and mismanagement, winding-up,
-          and company law advisory. Representation before NCLT, NCLAT, and the SFIO.
+          Corporate insolvency under IBC, oppression and mismanagement, winding-up,
+          scheme of arrangement, and company law advisory. Representation before
+          NCLT, NCLAT, and the SFIO.
         </p>
       </div>
 
       <div class="practice-card">
         <span class="practice-icon">🔍</span>
-        <h3 class="practice-name">PMLA & White Collar</h3>
+        <h3 class="practice-name">PMLA &amp; White Collar</h3>
         <p class="practice-desc">
-          Prevention of Money Laundering Act proceedings, Enforcement Directorate matters,
-          asset attachment challenges, and white-collar defence — from investigation to adjudication.
+          Prevention of Money Laundering Act proceedings, ED investigations,
+          provisional attachment challenges, prosecution complaints, and
+          white-collar defence — from dawn raids to adjudication.
         </p>
       </div>
 
       <div class="practice-card">
         <span class="practice-icon">📋</span>
-        <h3 class="practice-name">GST & Indirect Tax</h3>
+        <h3 class="practice-name">GST &amp; Indirect Tax</h3>
         <p class="practice-desc">
           GST assessments, audits, demand and recovery proceedings, classification disputes,
-          and advisory on indirect tax structuring and compliance.
+          input tax credit issues, and advisory on indirect tax structuring and compliance.
         </p>
       </div>
 
       <div class="practice-card">
         <span class="practice-icon">✍️</span>
-        <h3 class="practice-name">Drafting & Advisory</h3>
+        <h3 class="practice-name">Drafting &amp; Advisory</h3>
         <p class="practice-desc">
-          Written submissions, legal opinions, representations, and transactional advisory
-          where exceptional drafting is the difference. Quality is non-negotiable here.
+          Written submissions, legal opinions, representations, transactional advisory,
+          and research memos where exceptional drafting is the difference.
+          Quality is non-negotiable.
         </p>
       </div>
 
@@ -201,7 +261,6 @@
 
     <div class="blog-grid" id="featured-posts">
 
-      <!-- Post 0 — Featured -->
       <a href="blog-posts/new-income-tax-bill-2025.html" class="blog-card">
         <div class="blog-meta">
           <span class="blog-tag">Income Tax</span>
@@ -210,12 +269,11 @@
         <h3 class="blog-title">The New Income Tax Bill, 2025: What Changes, What Stays, and What It Means for You</h3>
         <p class="blog-excerpt">
           63 years of tax law, replaced. The Bill introduces a unified "Tax Year," drops "Previous Year" / "Assessment Year,"
-          codifies the post-2024 capital gains framework, and restructures the entire statute. A practitioner's guide to what's actually new.
+          codifies the post-2024 capital gains framework, and restructures the entire statute.
         </p>
         <div class="blog-read-more">Read Analysis →</div>
       </a>
 
-      <!-- Post 1 -->
       <a href="blog-posts/section-148-reassessment.html" class="blog-card">
         <div class="blog-meta">
           <span class="blog-tag">Income Tax</span>
@@ -229,21 +287,19 @@
         <div class="blog-read-more">Read Analysis →</div>
       </a>
 
-      <!-- Post 2 -->
       <a href="blog.html" class="blog-card">
         <div class="blog-meta">
           <span class="blog-tag">Securities</span>
           <span class="blog-date">February 2026</span>
         </div>
-        <h3 class="blog-title">SEBI's Insider Trading Framework: The Unpublished Price Sensitive Information Test</h3>
+        <h3 class="blog-title">SEBI's Insider Trading Framework: The UPSI Test Under PIT 2015</h3>
         <p class="blog-excerpt">
           What qualifies as UPSI? When does trading become insider trading? A practical
-          examination of the PIT Regulations, 2015 and recent SEBI adjudication orders.
+          examination of the PIT Regulations, 2015 and recent enforcement trends.
         </p>
         <div class="blog-read-more">Read Analysis →</div>
       </a>
 
-      <!-- Post 3 -->
       <a href="blog.html" class="blog-card">
         <div class="blog-meta">
           <span class="blog-tag">PMLA</span>
@@ -268,20 +324,24 @@
   <div class="hero-bg"></div>
   <div class="contact-inner">
     <div class="section-label" style="justify-content: center;">Get in Touch</div>
-    <h2 class="section-title">Let's talk about <em>your matter.</em></h2>
+    <h2 class="section-title" style="text-align:center;">Let's talk about <em>your matter.</em></h2>
     <div class="gold-divider" style="margin: 2rem auto;"></div>
 
-    <p class="section-body" style="margin: 0 auto; text-align: center;">
+    <p class="section-body" style="margin: 0 auto 2rem; text-align: center;">
       We take a select number of mandates at a time. If you have a matter
-      that demands precision, reach out directly.
+      that demands precision and depth, reach out directly.
     </p>
 
-    <a href="mailto:thewarroom@theaslex.in" class="contact-email">
-      ✉ thewarroom@theaslex.in
+    <a href="mailto:theaslex.office@gmail.com" class="contact-email">
+      ✉ theaslex.office@gmail.com
+    </a>
+
+    <a href="tel:+919824028247" class="contact-phone">
+      📞 +91-9824028247
     </a>
 
     <p class="contact-note">
-      Initial enquiries via email.<br />
+      Ahmedabad · Mumbai · Bilaspur<br />
       Please include a brief outline of your matter.
     </p>
   </div>
@@ -295,6 +355,7 @@
 
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#founder">Founder</a></li>
     <li><a href="#practice">Practice</a></li>
     <li><a href="blog.html">Insights</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -306,25 +367,111 @@
 </footer>
 
 <script>
-  // Nav scroll effect
+  // ── Star Field ──
+  const canvas = document.getElementById('star-field');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  let shootingStars = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight * 3;
+  }
+
+  function createStars() {
+    stars = [];
+    const count = Math.floor((canvas.width * canvas.height) / 8000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.005 + 0.002,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function drawStars(time) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Nebula glow
+    const g1 = ctx.createRadialGradient(canvas.width * 0.3, canvas.height * 0.15, 0, canvas.width * 0.3, canvas.height * 0.15, 400);
+    g1.addColorStop(0, 'rgba(139, 92, 246, 0.03)');
+    g1.addColorStop(1, 'transparent');
+    ctx.fillStyle = g1;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const g2 = ctx.createRadialGradient(canvas.width * 0.7, canvas.height * 0.4, 0, canvas.width * 0.7, canvas.height * 0.4, 300);
+    g2.addColorStop(0, 'rgba(74, 124, 247, 0.02)');
+    g2.addColorStop(1, 'transparent');
+    ctx.fillStyle = g2;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Stars
+    stars.forEach(s => {
+      const twinkle = Math.sin(time * s.speed + s.phase) * 0.3 + 0.7;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232, 228, 255, ${s.a * twinkle})`;
+      ctx.fill();
+    });
+
+    // Shooting stars
+    if (Math.random() < 0.002) {
+      shootingStars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height * 0.3,
+        vx: 4 + Math.random() * 4,
+        vy: 2 + Math.random() * 2,
+        life: 1,
+        len: 40 + Math.random() * 60
+      });
+    }
+
+    shootingStars = shootingStars.filter(ss => {
+      ss.x += ss.vx;
+      ss.y += ss.vy;
+      ss.life -= 0.015;
+
+      const grad = ctx.createLinearGradient(ss.x, ss.y, ss.x - ss.vx * (ss.len / ss.vx), ss.y - ss.vy * (ss.len / ss.vx));
+      grad.addColorStop(0, `rgba(201, 168, 76, ${ss.life})`);
+      grad.addColorStop(1, 'transparent');
+
+      ctx.beginPath();
+      ctx.moveTo(ss.x, ss.y);
+      ctx.lineTo(ss.x - ss.vx * (ss.len / ss.vx), ss.y - ss.vy * (ss.len / ss.vx));
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      return ss.life > 0;
+    });
+
+    requestAnimationFrame(drawStars);
+  }
+
+  resizeCanvas();
+  createStars();
+  requestAnimationFrame(drawStars);
+  window.addEventListener('resize', () => { resizeCanvas(); createStars(); });
+
+  // ── Nav scroll ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Mobile menu toggle
+  // ── Mobile menu ──
   const toggle = document.getElementById('nav-toggle');
   const links = document.getElementById('nav-links');
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-  });
-
-  // Close mobile menu on link click
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => links.classList.remove('open'));
   });
 
-  // Scroll reveal
+  // ── Scroll reveal ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -335,7 +482,7 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.practice-card, .blog-card, .stat').forEach(el => {
+  document.querySelectorAll('.practice-card, .blog-card, .stat, .founder-avatar, .credential-tag').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
