@@ -1,316 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insights — The AS Lex</title>
-  <meta name="description" content="Legal and tax analysis from The AS Lex. Deep dives on Income Tax, Securities Law, PMLA, and Corporate Law in India." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230A0E1A'/><text y='.9em' font-size='80' x='50%' text-anchor='middle' font-family='serif' fill='%23C9A84C'>Ł</text></svg>" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Legal and tax analysis from The AS Lex - insights on income tax, securities law, transfer pricing, PMLA, GST, and corporate law.">
+    <meta name="keywords" content="tax blog, ITAT analysis, securities law, transfer pricing, PMLA, GST, legal insights">
+    <meta name="author" content="The AS Lex">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Insights - The AS Lex">
+    <meta property="og:description" content="Legal and tax analysis from The AS Lex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theaslex.in/blog.html">
+    
+    <title>Insights - The AS Lex</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Blog-specific styles */
+        .blog-hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05) 0%, var(--bg-primary) 70%);
+            position: relative;
+        }
+        
+        .blog-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blog-hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Filter bar */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 2rem 0 4rem;
+            background: var(--bg-primary);
+        }
+        
+        .filter-btn {
+            padding: 0.6rem 1.25rem;
+            background: transparent;
+            border: 2px solid var(--border-gold);
+            border-radius: 50px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        
+        /* Blog grid */
+        .blog-section {
+            padding: 0 0 6rem;
+            background: var(--bg-primary);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .blog-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .blog-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 40px rgba(201, 168, 76, 0.2);
+            transform: translateY(-6px) scale(1.02);
+        }
+        
+        .blog-card-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+        
+        .blog-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .badge-income-tax {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .badge-pmla {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .badge-securities {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        
+        .badge-transfer-pricing {
+            background: rgba(6, 182, 212, 0.15);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .badge-gst {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .blog-card-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-card-title {
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .blog-card-excerpt {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .blog-card-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+        }
+        
+        .blog-card-link:hover {
+            color: var(--accent-light);
+            transform: translateX(4px);
+        }
+        
+        .blog-card-link::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: margin-left var(--transition);
+        }
+        
+        .blog-card:hover .blog-card-link::after {
+            margin-left: 0.75rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem;
+            }
+            
+            .blog-hero {
+                padding: 8rem 1.5rem 3rem;
+            }
+            
+            .filter-bar {
+                padding: 1.5rem 1rem 3rem;
+            }
+            
+            .filter-btn {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="nav-brand">
-    <div class="nav-logo-mark">Ł</div>
-    <span class="nav-name">The AS Lex</span>
-  </a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#practice">Practice</a></li>
-    <li><a href="blog.html" class="active">Insights</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
-  </ul>
-  <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
-</nav>
-
-<!-- BLOG HERO -->
-<div class="blog-page-hero">
-  <div class="section-label">From The War Room</div>
-  <h1 class="section-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">
-    Legal <em>Insights</em>
-  </h1>
-  <p class="section-body" style="margin-top: 1rem;">
-    Analysis, commentary, and deep dives on tax law, securities regulation,
-    and financial crimes — written for practitioners who need to think clearly
-    and argue convincingly.
-  </p>
-
-  <!-- Filters -->
-  <div class="blog-filters" id="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="income-tax">Income Tax</button>
-    <button class="filter-btn" data-filter="securities">Securities</button>
-    <button class="filter-btn" data-filter="pmla">PMLA</button>
-    <button class="filter-btn" data-filter="companies">Companies Act</button>
-    <button class="filter-btn" data-filter="gst">GST</button>
-  </div>
-</div>
-
-<!-- BLOG GRID -->
-<section style="padding: 60px 5% 100px; background: var(--bg-secondary);">
-  <div class="section-inner" style="max-width: 1200px;">
-    <div class="blog-page-grid" id="blog-grid">
-
-      <!-- ── Post — ITAT Mumbai Cash Redeposits Not Unexplained (Latest) ── -->
-      <a href="blog-posts/itat-mumbai-cash-redeposits-not-unexplained.html"
-         class="blog-card" data-category="income-tax">
-        <div class="blog-meta">
-          <span class="blog-tag">Income Tax</span>
-          <span class="blog-tag">Section 69A</span>
-          <span class="blog-date">9 Mar 2026</span>
+    <!-- Navigation -->
+    <nav id="nav" class="nav">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-mark">Ł</span>
+                <span class="logo-text">The AS Lex</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-links" id="nav-links">
+                <a href="/#about">About</a>
+                <a href="/#practice">Practice</a>
+                <a href="/blog.html" style="color: var(--accent-gold);">Insights</a>
+                <a href="/#contact" class="nav-cta">Contact</a>
+            </div>
         </div>
-        <h2 class="blog-title">
-          ITAT Mumbai Deletes Cash Deposit Additions — Rules Redeposits of Earlier Withdrawals Not "Unexplained"
-        </h2>
-        <p class="blog-excerpt">
-          In a significant ruling, the Mumbai ITAT holds that cash redeposits from earlier bank withdrawals
-          cannot be treated as unexplained money where the Revenue fails to prove the funds were utilised
-          elsewhere. COVID-era cash retention recognised as "plausible" — burden of proof shifts to Revenue.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
+    </nav>
 
-      <!-- ── Post — Madras HC Verizon TP Penalty 270A ── -->
-      <a href="blog-posts/madras-hc-verizon-tp-penalty-270a.html"
-         class="blog-card" data-category="income-tax">
-        <div class="blog-meta">
-          <span class="blog-tag">Income Tax</span>
-          <span class="blog-tag">Transfer Pricing</span>
-          <span class="blog-date">8 Mar 2026</span>
-        </div>
-        <h2 class="blog-title">
-          Transfer Pricing Adjustment ≠ Misreporting: Madras HC Quashes Section 270A Penalty on Verizon
-        </h2>
-        <p class="blog-excerpt">
-          The Madras High Court draws a bright constitutional line — estimation-based TP adjustments
-          cannot be equated with concealment or misrepresentation under Section 270A(9). A landmark
-          ruling on the limits of the penalty regime and the strength of Section 270AA immunity.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <h1>Insights</h1>
+        <p class="blog-hero-subtitle">Legal and tax analysis from The AS Lex</p>
+    </section>
 
-      <!-- ── Post — Verizon ITAT Transfer Pricing ── -->
-      <a href="blog-posts/verizon-itat-transfer-pricing-lrm.html"
-         class="blog-card" data-category="income-tax">
-        <div class="blog-meta">
-          <span class="blog-tag">Income Tax</span>
-          <span class="blog-tag">Transfer Pricing</span>
-          <span class="blog-date">5 Mar 2026</span>
-        </div>
-        <h2 class="blog-title">
-          When the Revenue Cherry-Picks: ITAT Delhi on the LRM, Berry Ratio, and the Limits of the "Other Method"
-        </h2>
-        <p class="blog-excerpt">
-          A February 2026 ITAT order draws bright lines around four recurring controversies —
-          the legitimacy of Limited Risk Models, when the Berry Ratio is the right PLI, why the
-          "Other Method" under Rule 10AB is not a blank cheque, and how retrospective amendments
-          cannot rewrite treaty definitions of royalty. The legal principles, not just the verdict.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post — PMLA Ancestral Property ── -->
-      <a href="blog-posts/pmla-ancestral-property-attachment.html"
-         class="blog-card" data-category="pmla">
-        <div class="blog-meta">
-          <span class="blog-tag">PMLA &amp; ED</span>
-          <span class="blog-date">20 Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          Ancestral or Inherited Properties Can Be Attached Under PMLA: Delhi High Court
-        </h2>
-        <p class="blog-excerpt">
-          The Delhi High Court held in <em>Arun Suri v. Directorate of Enforcement</em> (Feb 2026)
-          that ancestral properties are not immune from PMLA attachment. Where actual proceeds of
-          crime are untraceable, ED can attach equivalent-value property — regardless of how it
-          was acquired. A complete practitioner's analysis.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 0 — New IT Bill 2025 ── -->
-      <a href="blog-posts/new-income-tax-bill-2025.html"
-         class="blog-card" data-category="income-tax">
-        <div class="blog-meta">
-          <span class="blog-tag">Income Tax</span>
-          <span class="blog-date">19 Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          The New Income Tax Bill, 2025: What Changes, What Stays, and What It Means for You
-        </h2>
-        <p class="blog-excerpt">
-          India's biggest tax law overhaul in 63 years — introduced in February 2025.
-          The Bill replaces "Previous Year" and "Assessment Year" with a unified "Tax Year,"
-          restructures the entire statute, and codifies post-2024 reforms. Here's what
-          actually changes, what doesn't, and where the litigation will come from.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 1 ── -->
-      <a href="blog-posts/section-148-reassessment.html"
-         class="blog-card" data-category="income-tax">
-        <div class="blog-meta">
-          <span class="blog-tag">Income Tax</span>
-          <span class="blog-date">19 Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          Section 148 After the 2021 Amendment: What the Supreme Court Actually Held
-        </h2>
-        <p class="blog-excerpt">
-          The reassessment regime was completely upended by the Finance Act 2021.
-          Then the Supreme Court stepped in with Union of India v. Ashish Agarwal.
-          We break down what changed, what survived, and what it means for every pending notice.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 2 ── -->
-      <a href="blog.html" class="blog-card" data-category="securities">
-        <div class="blog-meta">
-          <span class="blog-tag">Securities</span>
-          <span class="blog-date">Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          SEBI's Insider Trading Framework: The UPSI Test in Practice
-        </h2>
-        <p class="blog-excerpt">
-          What qualifies as Unpublished Price Sensitive Information? When does trading
-          become insider trading? A practical walk through the PIT Regulations, 2015,
-          and recent SEBI adjudication orders that have sharpened (and complicated) the answer.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 3 ── -->
-      <a href="blog.html" class="blog-card" data-category="pmla">
-        <div class="blog-meta">
-          <span class="blog-tag">PMLA</span>
-          <span class="blog-date">Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          Vijay Madanlal Choudhary: The Supreme Court's Definitive Word on PMLA Powers
-        </h2>
-        <p class="blog-excerpt">
-          The 2022 judgment upheld sweeping ED powers — arrest, bail, attachment, twin conditions.
-          But not without limits. We examine what the court actually said, what's now settled,
-          and where the real legal battlegrounds still lie.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 4 ── -->
-      <a href="blog.html" class="blog-card" data-category="companies">
-        <div class="blog-meta">
-          <span class="blog-tag">Companies Act</span>
-          <span class="blog-date">Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          IBC vs. Income Tax Dept: Who Wins in an Insolvency?
-        </h2>
-        <p class="blog-excerpt">
-          The conflict between the Insolvency and Bankruptcy Code and the tax department's
-          recovery powers has produced contradictory rulings. We map the jurisprudential
-          landscape after the Supreme Court's intervention in Ghanashyam Mishra.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 5 ── -->
-      <a href="blog.html" class="blog-card" data-category="gst">
-        <div class="blog-meta">
-          <span class="blog-tag">GST</span>
-          <span class="blog-date">Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          Input Tax Credit Reversals: The Section 16(2) Trap and How to Avoid It
-        </h2>
-        <p class="blog-excerpt">
-          Section 16(2)(c) has been weaponised in GST audits across the country.
-          A supplier defaults, and your ITC vanishes. We examine the constitutional
-          challenge, the High Court split, and the defence strategies that actually work.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
-      <!-- ── Post 6 ── -->
-      <a href="blog.html" class="blog-card" data-category="income-tax">
-        <div class="blog-meta">
-          <span class="blog-tag">Income Tax</span>
-          <span class="blog-date">Feb 2026</span>
-        </div>
-        <h2 class="blog-title">
-          The Angel Tax Storm: Section 56(2)(viib) and Its Aftermath
-        </h2>
-        <p class="blog-excerpt">
-          Section 56(2)(viib) was a blunt instrument. Its application to startups
-          became notorious. We trace its history, the valuation battle it created,
-          and what the 2024 amendment actually changes for founders and investors.
-        </p>
-        <div class="blog-read-more">Read Analysis →</div>
-      </a>
-
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="income-tax">Income Tax</button>
+        <button class="filter-btn" data-filter="transfer-pricing">Transfer Pricing</button>
+        <button class="filter-btn" data-filter="pmla">PMLA</button>
+        <button class="filter-btn" data-filter="securities">Securities</button>
+        <button class="filter-btn" data-filter="gst">GST</button>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">The AS Lex</div>
-  <ul class="footer-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#practice">Practice</a></li>
-    <li><a href="blog.html">Insights</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <div class="footer-copy">&copy; 2026 The AS Lex. All rights reserved.</div>
-</footer>
+    <!-- Blog Grid -->
+    <section class="blog-section">
+        <div class="blog-grid" id="blog-grid">
+            
+            <!-- Post 1: Madras HC Verizon TP Penalty -->
+            <a href="blog-posts/madras-hc-verizon-tp-penalty-270a.html" class="blog-card" data-category="transfer-pricing">
+                <div class="blog-card-header">
+                    <span class="blog-badge badge-income-tax">Income Tax</span>
+                    <span class="blog-badge badge-transfer-pricing">Transfer Pricing</span>
+                </div>
+                <div class="blog-card-date">8 March 2026 · 10 min read</div>
+                <h3 class="blog-card-title">Transfer Pricing Adjustment ≠ Misreporting: Madras HC Quashes Section 270A Penalty on Verizon</h3>
+                <p class="blog-card-excerpt">A landmark ruling draws a bright constitutional line — estimation-based TP adjustments cannot, in law, be equated with concealment or misrepresentation. The penalty regime has limits.</p>
+                <span class="blog-card-link">Read Article</span>
+            </a>
 
-<script>
-  // Nav
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-  const toggle = document.getElementById('nav-toggle');
-  const links = document.getElementById('nav-links');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+            <!-- Post 2: ITAT Delhi Verizon LRM -->
+            <a href="blog-posts/verizon-itat-transfer-pricing-lrm.html" class="blog-card" data-category="transfer-pricing">
+                <div class="blog-card-header">
+                    <span class="blog-badge badge-income-tax">Income Tax</span>
+                    <span class="blog-badge badge-transfer-pricing">Transfer Pricing</span>
+                </div>
+                <div class="blog-card-date">5 March 2026 · 16 min read</div>
+                <h3 class="blog-card-title">When the Revenue Cherry-Picks: ITAT Delhi on the Limited Risk Model, Berry Ratio, and the Boundaries of the "Other Method"</h3>
+                <p class="blog-card-excerpt">A recent ITAT Delhi order doesn't just decide a case — it draws bright lines around four recurring transfer pricing and income tax controversies that affect every MNE operating in India.</p>
+                <span class="blog-card-link">Read Article</span>
+            </a>
 
-  // Filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('#blog-grid .blog-card');
+            <!-- Post 3: PMLA Ancestral Property -->
+            <a href="blog-posts/pmla-ancestral-property-attachment.html" class="blog-card" data-category="pmla">
+                <div class="blog-card-header">
+                    <span class="blog-badge badge-pmla">PMLA & ED</span>
+                </div>
+                <div class="blog-card-date">20 February 2026 · 10 min read</div>
+                <h3 class="blog-card-title">Ancestral or Inherited Properties Can Be Attached Under PMLA: Delhi High Court</h3>
+                <p class="blog-card-excerpt">The "it was my grandfather's house" defence is gone. A practitioner's analysis of Arun Suri v. Directorate of Enforcement and what it means for PMLA defence strategy.</p>
+                <span class="blog-card-link">Read Article</span>
+            </a>
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        card.style.display = match ? 'block' : 'none';
-      });
-    });
-  });
+            <!-- Post 4: Section 148 Reassessment -->
+            <a href="blog-posts/section-148-reassessment.html" class="blog-card" data-category="income-tax">
+                <div class="blog-card-header">
+                    <span class="blog-badge badge-income-tax">Income Tax</span>
+                </div>
+                <div class="blog-card-date">19 February 2026 · 12 min read</div>
+                <h3 class="blog-card-title">Section 148 After the 2021 Amendment: What the Supreme Court Actually Held</h3>
+                <p class="blog-card-excerpt">A practitioner's guide to the new reassessment regime — and where the battles are being fought today. Few provisions have produced as much litigation and confusion as Sections 147-151.</p>
+                <span class="blog-card-link">Read Article</span>
+            </a>
 
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
+            <!-- Post 5: New Income Tax Bill 2025 -->
+            <a href="blog-posts/new-income-tax-bill-2025.html" class="blog-card" data-category="income-tax">
+                <div class="blog-card-header">
+                    <span class="blog-badge badge-income-tax">Income Tax</span>
+                </div>
+                <div class="blog-card-date">19 February 2026 · 18 min read</div>
+                <h3 class="blog-card-title">The New Income Tax Bill, 2025: What Changes, What Stays, and What It Means for You</h3>
+                <p class="blog-card-excerpt">A practitioner's guide to India's biggest tax law overhaul in six decades — beyond the headlines. The Bill proposes to repeal and replace the Income Tax Act, 1961.</p>
+                <span class="blog-card-link">Read Article</span>
+            </a>
 
-  cards.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s`;
-    obs.observe(el);
-  });
-</script>
+            <!-- Post 6: ITAT Mumbai Cash Redeposits -->
+            <a href="blog-posts/itat-mumbai-cash-redeposits-not-unexplained.html" class="blog-card" data-category="income-tax">
+                <div class="blog-card-header">
+                    <span class="blog-badge badge-income-tax">Income Tax</span>
+                </div>
+                <div class="blog-card-date">9 March 2026 · 12 min read</div>
+                <h3 class="blog-card-title">ITAT Mumbai Deletes Cash Deposit Additions — Redeposits of Earlier Withdrawals Not "Unexplained"</h3>
+                <p class="blog-card-excerpt">ITAT Mumbai rules that cash redeposits from earlier bank withdrawals cannot be treated as unexplained money u/s 69A. Full analysis of Nitinkumar Kacharia v. DCIT with key takeaways.</p>
+                <span class="blog-card-link">Read Article</span>
+            </a>
 
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 The AS Lex. All rights reserved.</p>
+                <p class="footer-disclaimer">This website is for informational purposes only and does not constitute legal advice. Consult a qualified attorney for guidance on specific matters.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Scroll-based nav background
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // Filter cards
+                blogCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
