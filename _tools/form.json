@@ -1,0 +1,22 @@
+{
+  "action": "https://docs.google.com/forms/d/e/1FAIpQLSfAUjW3sFkGmDUtAPDO-vaTCN7lerV2xX14B0mdMTfgrZ29Ow/formResponse",
+  "fields": {
+    "name": "entry.533762324",
+    "email": "entry.1676880437",
+    "phone": "entry.839615273",
+    "org": "entry.905320554",
+    "area": "entry.611633812",
+    "forum": "entry.724744370",
+    "message": "entry.1767218590",
+    "ack": "entry.1026096197"
+  },
+  "areas": [
+    "Income Tax",
+    "International Tax & Transfer Pricing",
+    "GST",
+    "Securities Law (SEBI)",
+    "Companies Act / NCLT",
+    "PMLA & White Collar",
+    "Other"
+  ]
+}

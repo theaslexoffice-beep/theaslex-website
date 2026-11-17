@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://theaslex.in/sitemap.xml
